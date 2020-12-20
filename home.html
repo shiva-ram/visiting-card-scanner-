@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Home</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <style>
+        *{
+            background-color:rgb(35, 223, 223);
+        }
+        h1{
+            text-align: center;
+            margin-top: 10px;
+            margin-bottom: 0px;
+            padding:12px;
+            border-radius: 2px;
+            background-color: rgb(74, 193, 197);
+        }
+        #a{
+            margin: 52px 80px;
+            float: left;
+            padding: 2px;  
+        }
+        #b{
+            margin-left: 0px;
+        }
+        .show{
+            float:right;
+            padding-right:8px;
+            margin-right:500px;
+        }
+
+    </style>
+
+    </head>
+    <body>
+        <h1>VISITING CARD SCANNER</h1>
+
+        <form action="external" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <input type="file" name="image" class="btn btn-primary" id="a" accept="image/*" required>
+            <br><br>
+            <input type="submit" class="btn btn-outline-success btn-lg" id="b" value="submit">
+        <div class="show">
+        <button onclick="location.href='{% url 'script' %}'" class= "btn btn-outline-secondary btn-lg">show</button> 
+        {% if data %}
+        {{ data  }}
+        {% endif %}
+        </div>
+        </form>
+        
+    </body>
+</html>
